@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
         {
             float x = Random.Range(0f, 50f); // X座標を0から1000の間でランダムに選ぶ
             float y = Random.Range(0f, 30f); // Z座標を0から1000の間でランダムに選ぶ
-            Vector3 position = new Vector2(x, y); // Y座標は常に50
+            Vector3 position = new Vector3(x, y, -7f); // Y座標は常に50
 
             Instantiate(prefab, position, Quaternion.identity); // プレハブのインスタンス化
 
@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 float x = Random.Range(0f, 80f); // X座標を0から1000の間でランダムに選ぶ
                 float y = Random.Range(0f, 30f); // Z座標を0から1000の間でランダムに選ぶ
-                Vector3 position = new Vector2(x, y); // Y座標は常に50
+                Vector3 position = new Vector3(x, y , -7f); // Y座標は常に50
 
                 Instantiate(prefab, position, Quaternion.identity); // プレハブのインスタンス化
 

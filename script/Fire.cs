@@ -15,15 +15,21 @@ public class Fire : MonoBehaviour
         xMax = topRight.x;
         yMin = bottomLeft.y;
         yMax = topRight.y;
+
+        // 初期位置の Z 座標を 5 に設定
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
     }
 
-    private Vector2 direction;
+    private Vector3 direction;
     private float speed;
 
-    public void Initialize(Vector2 dir, float spd)
+    public void Initialize(Vector3 dir, float spd)
     {
         direction = dir;
         speed = spd;
+
+        // 方向ベクトルの Z 座標を 0 に設定（Z 軸方向の移動を防ぐため）
+        direction.z = 0;
     }
 
     void Update()
@@ -35,17 +41,19 @@ public class Fire : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //衝突したオブジェクトが敵かどうかをチェック
 
         MoveBullet();
     }
 
     void MoveBullet()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        // 現在の位置を取得し、Z 座標を 5 に固定
+        Vector3 newPosition = transform.position + direction * speed * Time.deltaTime;
+        newPosition.z = 0f; // Z 座標を 5 に固定
+        transform.position = newPosition;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter(Collider other)
     {
         // 衝突したオブジェクトが敵かどうかをチェック
         if (other.CompareTag("Enemy"))
@@ -55,4 +63,3 @@ public class Fire : MonoBehaviour
         }
     }
 }
-
