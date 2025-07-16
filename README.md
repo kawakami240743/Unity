@@ -1,2 +1,2 @@
-# アプリケーション対応端末
+# 対応OS
 MacOS(intel,silicon)
